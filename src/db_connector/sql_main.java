@@ -2,8 +2,6 @@ package src.db_connector;
 
 import src.FileUtils;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.*;
 import java.util.Vector;
 
@@ -16,15 +14,6 @@ public class sql_main {
     private Connection connection;
 
     public sql_main(String host, String port, String user, String pass, String db_name) {
-        /*
-        // print out connection details
-        System.out.println(
-                "Host: " + host +
-                "\nPort: " + port +
-                "\nUser: " + user +
-                "\nPassword: " + pass +
-                "\nDatabase: " + db_name);
-        */
         // store as class variables
         this.host = host;
         this.port = port;

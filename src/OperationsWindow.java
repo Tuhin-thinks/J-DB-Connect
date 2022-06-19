@@ -6,7 +6,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
-import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -33,7 +32,7 @@ public class OperationsWindow extends JDialog {
         this.sql_connector = sql_connector;  // sql connector instance with credentials loaded
 
         // add action listeners to buttons
-        executeButton.addActionListener(this::executeButtonActionPerformed);
+        executeButton.addActionListener(e -> executeButtonActionPerformed());
     }
 
     private void init_UI() {
@@ -43,7 +42,7 @@ public class OperationsWindow extends JDialog {
         tableScrollPane.setViewportView(table_mysql_data);
     }
 
-    private void executeButtonActionPerformed(ActionEvent e) {
+    private void executeButtonActionPerformed() {
         // get selected option index from combo box
         int selected_index = comboBox1.getSelectedIndex();
         if (selected_index == 0) {

@@ -3,19 +3,17 @@ package src;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
 public class main_window extends JFrame{//inheriting JFrame
-    JFrame main_frame;
-    JTextField db_host_text = new JTextField();
-    JTextField db_port_text = new JTextField();
-    JTextField db_user_text = new JTextField();
-    JTextField db_pass_text = new JTextField();
-    JTextField db_name_text = new JTextField();
+    final JTextField db_host_text = new JTextField();
+    final JTextField db_port_text = new JTextField();
+    final JTextField db_user_text = new JTextField();
+    final JTextField db_pass_text = new JTextField();
+    final JTextField db_name_text = new JTextField();
     private db_connect_action_listener connectionListener;
     main_window(){
         // create a main panel to hold all other panels and widgets
@@ -74,7 +72,7 @@ public class main_window extends JFrame{//inheriting JFrame
                 connectionListener.actionPerformed(e);
             }
             else {
-                connectionListener = new db_connect_action_listener(db_host_text, db_port_text, db_user_text, db_pass_text, db_name_text, main_db_status, main_frame);
+                connectionListener = new db_connect_action_listener(db_host_text, db_port_text, db_user_text, db_pass_text, db_name_text, main_db_status, this);
                 connectionListener.actionPerformed(e);
             }
         });
@@ -103,7 +101,7 @@ public class main_window extends JFrame{//inheriting JFrame
             Vector<String> connectionDetails = FileUtils.readFromFile("connection_details.txt");
             assert connectionDetails != null;
             assert connectionDetails.size() == 5;
-            String key, value, line;
+            String key, value;
             Map<String, JTextField> inpWidgetMapping = Map.of(
                     "Host", db_host_text,
                     "Port", db_port_text,
